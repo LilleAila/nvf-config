@@ -25,6 +25,7 @@
         };
       };
       mappings = {
+        pick = "<leader>b";
         cycleNext = "<tab>";
         cyclePrevious = "<S-tab>";
         moveNext = "<C-.>";
