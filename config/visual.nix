@@ -15,8 +15,8 @@
       rainbow-delimiters.enable = true;
     };
 
-    luaConfigRC.highlights = lib.nvim.dag.entryAnywhere ''
-      vim.api.nvim_set_hl(0, "SignColumn", {bg = "${colorScheme'.base00}"})
-    '';
+    highlight = {
+      SignColumn.bg = colorScheme'.base00;
+    };
   };
 }
