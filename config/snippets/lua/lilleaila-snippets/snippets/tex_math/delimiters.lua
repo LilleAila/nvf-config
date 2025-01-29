@@ -17,7 +17,7 @@ local brackets = {
   ["|"] = { "|", "|" },
   ["t"] = { "\\|", "\\|" },         -- Two pipes
   ["u"] = { "\\lceil", "\\rceil" }, -- round Up
-  ["d"] = { "\\lceil", "\\rceil" }, -- round Down
+  ["d"] = { "\\lfloor", "\\rfloor" }, -- round Down
   ["."] = { ".", "." },
 }
 
