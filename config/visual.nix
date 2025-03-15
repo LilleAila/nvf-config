@@ -18,5 +18,10 @@
     highlight = {
       SignColumn.bg = colorScheme'.base00;
     };
+
+    ui.borders = {
+      enable = true;
+      globalStyle = "single";
+    };
   };
 }

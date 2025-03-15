@@ -43,7 +43,6 @@
       formatOnSave = true;
       # lspkind.enable = true;
       trouble.enable = true;
-      lspSignature.enable = true;
       otter-nvim.enable = true;
     };
 

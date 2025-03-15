@@ -1,90 +1,66 @@
-{ pkgs, inputs', ... }:
+{ ... }:
 {
   vim = {
-    lazy.plugins = {
-      "vimplugin-blink-emoji.nvim" = {
-        package = pkgs.vimUtils.buildVimPlugin {
-          name = "blink-emoji.nvim";
-          src = inputs'.plugin-blink-emoji;
-          dependencies = [ pkgs.vimPlugins.blink-cmp ];
-        };
+    autocomplete.blink-cmp = {
+      enable = true;
+
+      sourcePlugins = {
+        emoji.enable = true;
+        ripgrep.enable = true;
+        spell.enable = true;
       };
 
-      "vimplugin-blink-cmp-spell" = {
-        package = pkgs.vimUtils.buildVimPlugin {
-          name = "blink-cmp-spell";
-          src = inputs'.plugin-blink-cmp-spell;
-          dependencies = [ pkgs.vimPlugins.blink-cmp ];
-        };
-      };
-
-      "blink.cmp" = {
-        package = pkgs.vimPlugins.blink-cmp;
-        # event = [ "LspAttach" ];
-        # ft = [ "markdown" ];
-        event = [ "BufEnter" ];
-        setupModule = "blink.cmp";
-
-        setupOpts = {
-          keymap =
-            let
-              fallback = a: [
-                a
-                "fallback"
-              ];
-            in
-            {
-              preset = "none";
-              "<C-j>" = fallback "select_next";
-              "<C-k>" = fallback "select_prev";
-              "<CS-j>" = fallback "scroll_documentation_down";
-              "<CS-k>" = fallback "scroll_documentation_up";
-              "<C-space>" = [
-                "show"
-                "show_documentation"
-                "hide_documentation"
-              ];
-              "<C-e>" = [ "hide" ];
-              "<C-y>" = [ "select_and_accept" ];
-            };
-
-          snippets.preset = "luasnip";
-
-          sources = {
-            default = [
-              "lsp"
-              "path"
-              "snippets"
-              "buffer"
-              "emoji"
+      setupOpts = {
+        keymap =
+          let
+            fallback = a: [
+              a
+              "fallback"
             ];
-            cmdline = [ ];
-
-            providers = {
-              emoji = {
-                name = "Emoji";
-                module = "blink-emoji";
-              };
-
-              spell = {
-                name = "Spell";
-                module = "blink-cmp-spell";
-              };
-            };
+          in
+          {
+            preset = "none";
+            "<C-j>" = fallback "select_next";
+            "<C-k>" = fallback "select_prev";
+            "<CS-j>" = fallback "scroll_documentation_down";
+            "<CS-k>" = fallback "scroll_documentation_up";
+            "<C-space>" = [
+              "show"
+              "show_documentation"
+              "hide_documentation"
+            ];
+            "<C-e>" = [ "hide" ];
+            "<C-y>" = [ "select_and_accept" ];
           };
 
-          completion = {
-            menu = {
-              auto_show = true;
-            };
+        cmdline.sources = [ ];
 
-            documentation = {
-              auto_show = true;
-              auto_show_delay_ms = 500;
-            };
+        sources = {
+          default = [
+            "snippets"
+            "lsp"
+            "path"
+            "ripgrep"
+            "buffer"
+            "emoji"
+          ];
+        };
 
-            ghost_text.enabled = false;
+        snippets.preset = "luasnip";
+
+        signature.enabled = true;
+
+        completion = {
+          documentation = {
+            auto_show = true;
+            auto_show_delay_ms = 0;
           };
+
+          menu = {
+            auto_show = true;
+          };
+
+          ghost_text.enabled = false;
         };
       };
     };

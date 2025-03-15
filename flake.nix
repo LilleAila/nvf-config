@@ -10,15 +10,6 @@
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
-
-    plugin-blink-emoji = {
-      url = "github:moyiz/blink-emoji.nvim";
-      flake = false;
-    };
-    plugin-blink-cmp-spell = {
-      url = "github:ribru17/blink-cmp-spell";
-      flake = false;
-    };
   };
 
   outputs =
