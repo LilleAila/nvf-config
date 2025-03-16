@@ -6,7 +6,7 @@
 
       sourcePlugins = {
         emoji.enable = true;
-        ripgrep.enable = true;
+        # ripgrep.enable = true;
         spell.enable = true;
       };
 
@@ -40,7 +40,7 @@
             "snippets"
             "lsp"
             "path"
-            "ripgrep"
+            # "ripgrep"
             "buffer"
             "emoji"
           ];
