@@ -5,6 +5,7 @@
     ./lspconfig.nix
   ];
 
+  # NOTE: idk why this had to be enabled, but nvim just crashed without
   vim.startPlugins = [ "plenary-nvim" ];
 
   my.lspconfig = {
@@ -33,7 +34,7 @@
   vim = {
     languages = {
       # Options applied to all languages
-      enableLSP = false;
+      enableLSP = true;
       enableFormat = true;
       enableTreesitter = true;
       enableExtraDiagnostics = true;
@@ -42,6 +43,9 @@
       # Languages
       # nix = {
       #   enable = true;
+      #   lsp.package = [
+      #     "nixd"
+      #   ];
       #   format = {
       #     type = "nixfmt";
       #     package = pkgs.nixfmt-rfc-style;
@@ -53,16 +57,67 @@
       #   format.type = "prettierd";
       #   format.enable = false;
       # };
-      # ts.enable = true;
-      # python.enable = true;
+      # ts = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "typescript-language-server"
+      #     "--stdio"
+      #   ];
+      # };
+      # python = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "pyright"
+      #   ];
+      # };
       # html.enable = true;
-      # css.enable = true;
-      # tailwind.enable = true;
-      # lua.enable = true;
-      # haskell.enable = true;
-      # svelte.enable = true;
-      # astro.enable = true;
-      # rust.enable = true;
+      # css = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "vscode-css-language-server"
+      #     "--stdio"
+      #   ];
+      # };
+      # tailwind = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "tailwindcss-language-server"
+      #     "--stdio"
+      #   ];
+      # };
+      # lua = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "lua-language-server"
+      #   ];
+      # };
+      # haskell = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "haskell-language-server-wrapper"
+      #     "--lsp"
+      #   ];
+      # };
+      # svelte = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "svelteserver"
+      #     "--stdio"
+      #   ];
+      # };
+      # astro = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "astro-ls"
+      #     "--stdio"
+      #   ];
+      # };
+      # rust = {
+      #   enable = true;
+      #   lsp.package = [
+      #     "rust-analyzer"
+      #   ];
+      # };
     };
 
     lsp = {
