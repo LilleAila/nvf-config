@@ -10,6 +10,17 @@
         spell.enable = true;
       };
 
+      # For some reason nvf provides default options for all this
+      mappings = {
+        close = null;
+        complete = null;
+        confirm = null;
+        next = null;
+        previous = null;
+        scrollDocsDown = null;
+        scrollDocsUp = null;
+      };
+
       setupOpts = {
         keymap =
           let
