@@ -61,22 +61,6 @@ in
           ''
         )
       ) cfg.sources;
-      # vim.pluginRC = mapAttrs (
-      #   name: config:
-      #   (entryAfter [ "lspconfig" ] ''
-      #     lspconfig.${name}.setup(${
-      #       toLuaObject (
-      #         {
-      #           inherit name;
-      #           capabilities = mkLuaInline "capabilities";
-      #           on_attach = mkLuaInline "default_on_attach";
-      #         }
-      #         // config
-      #       )
-      #     })
-      #   '')
-      #     cfg.sources
-      # );
     }
   ]);
 }

@@ -32,120 +32,79 @@
   };
 
   vim = {
-    languages = {
-      # Options applied to all languages
-      enableLSP = true;
-      enableFormat = true;
-      enableTreesitter = true;
-      enableExtraDiagnostics = true;
-      enableDAP = true;
-
-      # Languages
-      # nix = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "nixd"
-      #   ];
-      #   format = {
-      #     type = "nixfmt";
-      #     package = pkgs.nixfmt-rfc-style;
-      #   };
-      # };
-      # markdown = {
-      #   enable = true;
-      #   lsp.enable = false;
-      #   format.type = "prettierd";
-      #   format.enable = false;
-      # };
-      # ts = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "typescript-language-server"
-      #     "--stdio"
-      #   ];
-      # };
-      # python = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "pyright"
-      #   ];
-      # };
-      # html.enable = true;
-      # css = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "vscode-css-language-server"
-      #     "--stdio"
-      #   ];
-      # };
-      # tailwind = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "tailwindcss-language-server"
-      #     "--stdio"
-      #   ];
-      # };
-      # lua = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "lua-language-server"
-      #   ];
-      # };
-      # haskell = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "haskell-language-server-wrapper"
-      #     "--lsp"
-      #   ];
-      # };
-      # svelte = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "svelteserver"
-      #     "--stdio"
-      #   ];
-      # };
-      # astro = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "astro-ls"
-      #     "--stdio"
-      #   ];
-      # };
-      # rust = {
-      #   enable = true;
-      #   lsp.package = [
-      #     "rust-analyzer"
-      #   ];
-      # };
-    };
-
     lsp = {
-      null-ls.enable = lib.mkForce false;
       formatOnSave = true;
       # lspkind.enable = true;
       trouble.enable = true;
       otter-nvim.enable = true;
     };
 
-    debugger = {
-      nvim-dap = {
-        enable = true;
-        ui.enable = true;
+    formatter.conform-nvim = {
+      enable = true;
+      setupOpts = {
+        format_after_save = {
+          lsp_format = "never";
+          async = true;
+        };
+        formatters_by_ft =
+          let
+            mkFormatter =
+              formatters:
+              (lib.attrsets.listToAttrs (map (f: lib.attrsets.nameValuePair "@${f}" f) formatters))
+              // {
+                stop_after_first = true;
+              };
+          in
+          {
+            haskell = mkFormatter [
+              "ormolu"
+            ];
+            html = mkFormatter [
+              "prettierd"
+              "prettier"
+            ];
+            css = mkFormatter [
+              "prettierd"
+              "prettier"
+            ];
+            javascript = mkFormatter [
+              "prettierd"
+              "prettier"
+            ];
+            javascriptreact = mkFormatter [
+              "prettierd"
+              "prettier"
+            ];
+            typescript = mkFormatter [
+              "prettierd"
+              "prettier"
+            ];
+            python = mkFormatter [
+              "black"
+            ];
+            lua = mkFormatter [
+              "stylua"
+            ];
+            nix = mkFormatter [
+              "nixfmt"
+              "alejandra"
+            ];
+            markdown = mkFormatter [
+              "prettierd"
+              "prettier"
+            ];
+            rust = mkFormatter [
+              "rustfmt"
+            ];
+          };
       };
     };
-
-    # startPlugins = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
 
     treesitter = {
       enable = true;
       addDefaultGrammars = true;
       autotagHtml = true;
-      # Maybe just install every single one?
-      grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-        yaml # Affects obsidian note frontmatter
-        latex
-      ];
+      grammars = pkgs.vimPlugins.nvim-treesitter.allGrammars;
     };
   };
 }
