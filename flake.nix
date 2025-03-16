@@ -29,6 +29,10 @@
           colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
         };
         snippets = pkgs.callPackage ./pkgs/snippets.nix { };
+        inspect = pkgs.writeShellApplication {
+          name = "nvf-inspect-config";
+          text = ''nvim "$(${nvf-config}/bin/nvf-print-config-path)"'';
+        };
       });
 
       devShells = forEachSystem (pkgs: {

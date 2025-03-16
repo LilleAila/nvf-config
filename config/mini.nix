@@ -25,7 +25,6 @@
       jump2d = {
         enable = true;
         setupOpts = {
-          labels = "abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
           mappings.start_jumping = "<cr>";
           view.dim = true;
           silent = true;

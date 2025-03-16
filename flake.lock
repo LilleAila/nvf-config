@@ -197,45 +197,11 @@
         "type": "github"
       }
     },
-    "plugin-blink-cmp-spell": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1741207023,
-        "narHash": "sha256-B5gqlZvfXAT5hHiNjVOkEkBw6rwTkdH356u6jpN8TY0=",
-        "owner": "ribru17",
-        "repo": "blink-cmp-spell",
-        "rev": "782bc76be09c0c5dd08e3edd04e4ec1054c3158e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ribru17",
-        "repo": "blink-cmp-spell",
-        "type": "github"
-      }
-    },
-    "plugin-blink-emoji": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739388859,
-        "narHash": "sha256-LZDaFaHbezLjx9im1L9GnXdcuIg5OW4fCKn/M6vYmFg=",
-        "owner": "moyiz",
-        "repo": "blink-emoji.nvim",
-        "rev": "a77aebc092ebece1eed108f301452ae774d6b67a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "moyiz",
-        "repo": "blink-emoji.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
-        "nvf": "nvf",
-        "plugin-blink-cmp-spell": "plugin-blink-cmp-spell",
-        "plugin-blink-emoji": "plugin-blink-emoji"
+        "nvf": "nvf"
       }
     },
     "rust-overlay": {
