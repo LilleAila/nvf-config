@@ -2,7 +2,10 @@
 {
   imports = [
     ./completion.nix
+
+    # My own versions of some upstream modules
     ./lspconfig.nix
+    ./nvim-lint.nix
   ];
 
   # NOTE: idk why this had to be enabled, but nvim just crashed without
@@ -28,6 +31,19 @@
       svelte = { };
       astro = { };
       rust_analyzer = { };
+    };
+  };
+
+  my.nvim-lint = {
+    enable = true;
+    linters_by_ft = {
+      nix = [
+        "statix"
+        "deadnix"
+      ];
+      tex = [
+        "chktex"
+      ];
     };
   };
 
