@@ -62,6 +62,7 @@
           lsp_format = "never";
           async = true;
         };
+        formatters.prettierd.command = lib.getExe pkgs.prettierd;
         formatters_by_ft =
           let
             mkFormatter =
