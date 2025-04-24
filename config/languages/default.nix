@@ -33,6 +33,7 @@
       rust_analyzer = { };
       blueprint_ls = { };
       vala_ls = { };
+      tinymist = { };
     };
   };
 
