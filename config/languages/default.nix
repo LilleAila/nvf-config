@@ -9,7 +9,10 @@
   ];
 
   # NOTE: idk why this had to be enabled, but nvim just crashed without
-  vim.startPlugins = [ "plenary-nvim" ];
+  vim.startPlugins = [
+    "plenary-nvim"
+    pkgs.vimPlugins.plantuml-syntax
+  ];
 
   my.lspconfig = {
     enable = true;
