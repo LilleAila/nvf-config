@@ -119,6 +119,9 @@
             rust = mkFormatter [
               "rustfmt"
             ];
+            typst = mkFormatter [
+              "typstyle"
+            ];
           };
       };
     };
