@@ -5,6 +5,9 @@
     fzf-lua = {
       enable = true;
       profile = "default-title";
+      setupOpts = {
+        previewers.builtin.snacks_image.enabled = true;
+      };
     };
 
     keymaps = [
