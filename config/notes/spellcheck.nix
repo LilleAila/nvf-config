@@ -10,6 +10,7 @@ let
       spellfiles' = lib.nvim.lua.listToLuaTable spellfiles;
     in
     # Spell is disabled by default, enabled on language switch
+    # lua
     ''
       function()
         vim.opt.spell = true

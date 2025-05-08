@@ -37,6 +37,22 @@
       (util.mkKeymap' "n" "k" "gk")
       (util.mkKeymap' "n" "H" "_")
       (util.mkKeymap' "n" "L" "g_")
+      (util.mkLuaKeymap "n" "<leader>fd" # lua
+        ''
+          function()
+            local file = vim.fn.expand('%:p')
+            local confirm = vim.fn.confirm("Delete file?\n" .. file, "&Yes\n&No", 2)
+            if confirm == 1 then
+              vim.fn.delete(file)
+              vim.cmd('bdelete!')
+              print("File deleted: " .. file)
+            else
+              print("Delete canceled")
+            end
+          end
+        ''
+        "Delete file"
+      )
     ];
   };
 }
