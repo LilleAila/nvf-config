@@ -28,7 +28,10 @@
 
     keymaps = [
       {
-        mode = "i";
+        mode = [
+          "i"
+          "s"
+        ];
         key = "<tab>";
         lua = true;
         expr = true;
@@ -48,7 +51,10 @@
           '';
       }
       {
-        mode = "i";
+        mode = [
+          "i"
+          "s"
+        ];
         key = "<S-tab>";
         lua = true;
         action = # lua
