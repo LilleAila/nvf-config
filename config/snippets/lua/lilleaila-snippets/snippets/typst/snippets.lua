@@ -4,7 +4,7 @@ local s, i, fmta = ls.s, ls.i, ls.fmta
 local M = {
   s("imfig", fmta([[
     figure(
-      image("<>", height: 4cm),
+      image("<>"),
       caption: [
         <>
       ],
