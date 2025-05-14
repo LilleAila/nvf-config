@@ -165,7 +165,7 @@ in
     ];
 
     utility.images.image-nvim = {
-      enable = true;
+      enable = false;
       setupOpts = {
         backend = "kitty";
         integrations.markdown = {

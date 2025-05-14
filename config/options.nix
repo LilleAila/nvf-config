@@ -1,6 +1,9 @@
 {
   vim = {
-    useSystemClipboard = true;
+    clipboard = {
+      enable = true;
+      registers = "unnamedplus";
+    };
 
     options = {
       # 2-space indents
