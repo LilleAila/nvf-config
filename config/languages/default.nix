@@ -50,6 +50,9 @@
       tex = [
         "chktex"
       ];
+      python = [
+        "ruff"
+      ];
     };
   };
 
@@ -103,7 +106,8 @@
               "prettier"
             ];
             python = mkFormatter [
-              "black"
+              # "black"
+              "ruff"
             ];
             lua = mkFormatter [
               "stylua"
