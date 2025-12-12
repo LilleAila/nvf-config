@@ -16,7 +16,7 @@
         history = false;
       };
       providers = [
-        outputs.packages.${pkgs.system}.snippets
+        outputs.packages.${pkgs.stdenv.hostPlatform.system}.snippets
       ];
       loaders = # lua
         ''

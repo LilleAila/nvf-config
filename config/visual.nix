@@ -5,7 +5,7 @@
       enable = true;
       # Looks bad :(
       # name = "base16";
-      # base16-colors = colorScheme.palette;
+      # base16-colors = colorScheme';
       name = "gruvbox";
       style = "dark";
     };

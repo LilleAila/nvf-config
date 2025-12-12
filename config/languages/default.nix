@@ -2,66 +2,57 @@
 {
   imports = [
     ./completion.nix
-
-    # My own versions of some upstream modules
-    ./lspconfig.nix
-    ./nvim-lint.nix
   ];
 
-  # NOTE: idk why this had to be enabled, but nvim just crashed without
   vim.startPlugins = [
-    "plenary-nvim"
+    "plenary-nvim" # NOTE: idk why this had to be enabled, but nvim just crashed without
     pkgs.vimPlugins.plantuml-syntax
   ];
 
-  my.lspconfig = {
-    enable = true;
-    sources = {
-      ts_ls = { };
-      nixd = {
-        settings.nixd = {
-          diagnostic.suppress = [
-            "sema-escaping-with"
-            "var-bind-to-this"
-          ];
-        };
-      };
-      pyright = { };
-      cssls = { };
-      tailwindcss = { };
-      lua_ls = { };
-      hls = { };
-      svelte = { };
-      astro = { };
-      rust_analyzer = { };
-      blueprint_ls = { };
-      vala_ls = { };
-      tinymist = { };
-    };
-  };
-
-  my.nvim-lint = {
-    enable = true;
-    linters_by_ft = {
-      nix = [
-        "statix"
-        "deadnix"
-      ];
-      tex = [
-        "chktex"
-      ];
-      python = [
-        "ruff"
-      ];
-    };
-  };
-
   vim = {
     lsp = {
+      enable = true;
       formatOnSave = true;
-      # lspkind.enable = true;
       trouble.enable = true;
       otter-nvim.enable = true;
+
+      servers = {
+        "*" = {
+          root_markers = [ ".git" ];
+        };
+
+        nixd = {
+          settings.nixd = {
+            diagnostic.suppress = [
+              "sema-escaping-with"
+              "var-bind-to-this"
+            ];
+          };
+        };
+        ts_ls = { };
+        pyright = { };
+        cssls = { };
+        tailwindcss = { };
+        lua_ls = { };
+        hls = { };
+        svelte = { };
+        astro = { };
+        rust_analyzer = { };
+        blueprint_ls = { };
+        vala_ls = { };
+        tinymist = { };
+        html = { };
+        emmet_ls = { };
+      };
+    };
+
+    diagnostics.nvim-lint = {
+      enable = true;
+      linters_by_ft = {
+        nix = [ "statix" ];
+        tex = [ "chktex" ];
+        python = [ "ruff" ];
+      };
     };
 
     formatter.conform-nvim = {
@@ -80,52 +71,29 @@
               // {
                 stop_after_first = true;
               };
+            prettier = mkFormatter [
+              "prettierd"
+              "prettier"
+            ];
           in
           {
             haskell = mkFormatter [
               "ormolu"
             ];
-            html = mkFormatter [
-              "prettierd"
-              "prettier"
-            ];
-            css = mkFormatter [
-              "prettierd"
-              "prettier"
-            ];
-            javascript = mkFormatter [
-              "prettierd"
-              "prettier"
-            ];
-            javascriptreact = mkFormatter [
-              "prettierd"
-              "prettier"
-            ];
-            typescript = mkFormatter [
-              "prettierd"
-              "prettier"
-            ];
-            python = mkFormatter [
-              # "black"
-              "ruff"
-            ];
-            lua = mkFormatter [
-              "stylua"
-            ];
+            html = prettier;
+            css = prettier;
+            javascript = prettier;
+            javascriptreact = prettier;
+            typescript = prettier;
+            markdown = prettier;
+            python = mkFormatter [ "ruff" ];
+            lua = mkFormatter [ "stylua" ];
             nix = mkFormatter [
               "nixfmt"
               "alejandra"
             ];
-            markdown = mkFormatter [
-              "prettierd"
-              "prettier"
-            ];
-            rust = mkFormatter [
-              "rustfmt"
-            ];
-            typst = mkFormatter [
-              "typstyle"
-            ];
+            rust = mkFormatter [ "rustfmt" ];
+            typst = mkFormatter [ "typstyle" ];
           };
       };
     };

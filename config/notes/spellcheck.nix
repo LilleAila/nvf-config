@@ -5,9 +5,9 @@ let
   mkSpell =
     langs:
     let
-      langs' = lib.nvim.lua.listToLuaTable langs;
+      langs' = lib.nvim.lua.toLuaObject langs;
       spellfiles = map mkSpellFile langs;
-      spellfiles' = lib.nvim.lua.listToLuaTable spellfiles;
+      spellfiles' = lib.nvim.lua.toLuaObject spellfiles;
     in
     # Spell is disabled by default, enabled on language switch
     # lua
