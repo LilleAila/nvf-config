@@ -18,6 +18,9 @@
 
       servers = {
         "*" = {
+          capabilities =
+            lib.generators.mkLuaInline # lua
+              ''vim.lsp.protocol.make_client_capabilities()'';
           root_markers = [ ".git" ];
         };
 
