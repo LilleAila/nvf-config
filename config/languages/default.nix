@@ -41,6 +41,16 @@
             "setup.py"
             ".git"
           ];
+          root_dir =
+            lib.generators.mkLuaInline # lua
+              ''
+                function(fname)
+                  return vim.fs.dirname(
+                    vim.fs.find({ "pyproject.toml", "setup.py", ".git" }, { upward = true })[1]
+                    or vim.loop.cwd()
+                  )
+                end
+              '';
         };
         cssls = { };
         tailwindcss = { };
