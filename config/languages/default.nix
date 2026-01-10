@@ -15,6 +15,7 @@
       formatOnSave = true;
       trouble.enable = true;
       otter-nvim.enable = true;
+      lspconfig.enable = true;
 
       servers = {
         "*" = {
