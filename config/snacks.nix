@@ -12,7 +12,7 @@
       enable = true;
       setupOpts = {
         image = {
-          enabled = true;
+          enabled = false;
           force = true;
           doc = {
             conceal = false;
